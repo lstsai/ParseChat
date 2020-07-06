@@ -39,7 +39,10 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         }
         else
+        {
             NSLog(@"User logged in successfully");
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        }
     }];
 }
 - (IBAction)didTapSignUp:(id)sender {
@@ -76,7 +79,7 @@
     }
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -84,6 +87,6 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
