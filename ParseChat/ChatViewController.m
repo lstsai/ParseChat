@@ -20,8 +20,18 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
+    
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshOnTimer) userInfo:nil repeats:true];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView insertSubview:refreshControl atIndex:0];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
 
+
+}
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+    [self refreshOnTimer];
+    [refreshControl endRefreshing];
+    
 }
 - (IBAction)didTapSend:(id)sender {
     PFObject *chatMessage = [PFObject objectWithClassName:@"Message_fbu2019"];
@@ -45,7 +55,7 @@
     [chatQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable chats, NSError * _Nullable error) {
         if(chats)
         {
-            NSLog(@"Success getting chats");
+            //NSLog(@"Success getting chats");
             self.chatMessages=chats;
             [self.tableView reloadData];
 
@@ -54,6 +64,9 @@
             NSLog(@"Error getting chats: %@", error.localizedDescription);
         }
     }];
+}
+- (IBAction)didTapLogout:(id)sender {
+    [PFUser logOut];
 }
 
 
