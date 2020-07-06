@@ -91,29 +91,39 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="65" id="2zr-d0-dff" customClass="ChatCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="85" id="2zr-d0-dff" customClass="ChatCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2zr-d0-dff" id="HpC-41-8hK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U1-ay-lAl">
-                                                    <rect key="frame" x="28" y="19" width="358" height="27"/>
+                                                    <rect key="frame" x="28" y="45" width="110" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMP-72-5QR">
+                                                    <rect key="frame" x="28" y="16" width="82" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7U1-ay-lAl" firstAttribute="top" secondItem="HpC-41-8hK" secondAttribute="topMargin" constant="8" id="4po-O4-eu5"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7U1-ay-lAl" secondAttribute="trailing" constant="8" id="QHy-Gq-vzq"/>
-                                                <constraint firstItem="7U1-ay-lAl" firstAttribute="leading" secondItem="HpC-41-8hK" secondAttribute="leadingMargin" constant="8" id="c2z-G0-Qdk"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="7U1-ay-lAl" secondAttribute="bottom" constant="8" id="lrc-7T-nbV"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7U1-ay-lAl" secondAttribute="trailing" constant="28" id="22R-0f-o6T"/>
+                                                <constraint firstItem="sMP-72-5QR" firstAttribute="top" secondItem="HpC-41-8hK" secondAttribute="top" constant="16" id="9dV-Cg-OFz"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sMP-72-5QR" secondAttribute="trailing" constant="28" id="Shb-aU-wfK"/>
+                                                <constraint firstItem="7U1-ay-lAl" firstAttribute="leading" secondItem="sMP-72-5QR" secondAttribute="leading" id="UqX-h1-wHK"/>
+                                                <constraint firstItem="7U1-ay-lAl" firstAttribute="top" secondItem="sMP-72-5QR" secondAttribute="bottom" constant="8" id="a5z-3W-JN6"/>
+                                                <constraint firstItem="sMP-72-5QR" firstAttribute="leading" secondItem="HpC-41-8hK" secondAttribute="leading" constant="28" id="gCr-rx-oaq"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7U1-ay-lAl" secondAttribute="bottom" constant="16" id="olH-ma-9VY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="chatLabel" destination="7U1-ay-lAl" id="Emv-MT-gSL"/>
+                                            <outlet property="usernameLabel" destination="sMP-72-5QR" id="qEN-yM-Vjq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
