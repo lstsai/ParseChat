@@ -9,6 +9,7 @@
 #import "ChatViewController.h"
 #import <Parse/Parse.h>
 #import "ChatCell.h"
+#import "UIImageView+AFNetworking.h"
 @interface ChatViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -69,7 +70,6 @@
     [PFUser logOut];
 }
 
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ChatCell *currentCell= [self.tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
     PFObject *chatMessage= self.chatMessages[indexPath.row];
@@ -80,8 +80,19 @@
     } else {
         currentCell.usernameLabel.text = @"anon";
     }
-    
     currentCell.chatLabel.text= chatMessage[@"text"];
+    
+    NSURL *url= [NSURL URLWithString:[NSString stringWithFormat:@"https://api.adorable.io/avatars/100/%@",currentCell.usernameLabel.text]];
+    NSURLRequest *request= [NSURLRequest requestWithURL:url];
+    
+    [currentCell.profileImage setImageWithURLRequest:request placeholderImage:nil
+       success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+               currentCell.imageView.image = image;
+       }
+       failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+           NSLog(@"Failed to load image");
+    }];
+    
     return currentCell;
 }
 
