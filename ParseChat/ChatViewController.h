@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChatViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *chatTextField;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *chatMessages;
+-(void) refreshOnTimer;
 
 @end
 

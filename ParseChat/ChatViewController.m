@@ -8,7 +8,8 @@
 
 #import "ChatViewController.h"
 #import <Parse/Parse.h>
-@interface ChatViewController ()
+#import "ChatCell.h"
+@interface ChatViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -17,9 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.delegate=self;
+    self.tableView.dataSource=self;
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshOnTimer) userInfo:nil repeats:true];
+
 }
 - (IBAction)didTapSend:(id)sender {
-    PFObject *chatMessage = [PFObject objectWithClassName:@"Message_fbu2020"];
+    PFObject *chatMessage = [PFObject objectWithClassName:@"Message_fbu2019"];
     chatMessage[@"text"] = self.chatTextField.text;
     
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -32,7 +37,35 @@
     }];
 
 }
+-(void) refreshOnTimer{
+    PFQuery *chatQuery= [PFQuery queryWithClassName:@"Message_fbu2019"];
+    [chatQuery orderByDescending:@"createdAt"];
 
+    [chatQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable chats, NSError * _Nullable error) {
+        if(chats)
+        {
+            NSLog(@"Success getting chats");
+            self.chatMessages=chats;
+            [self.tableView reloadData];
+
+        }
+        else{
+            NSLog(@"Error getting chats: %@", error.localizedDescription);
+        }
+    }];
+}
+
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ChatCell *currentCell= [self.tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+    PFObject *chatMessage= self.chatMessages[indexPath.row];
+    currentCell.chatLabel.text= chatMessage[@"text"];
+    return currentCell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.chatMessages.count;
+}
 /*
 #pragma mark - Navigation
 
@@ -42,5 +75,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 @end

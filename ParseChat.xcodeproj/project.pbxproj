@@ -20,6 +20,7 @@
 		DCFF79D724B382700022D6C7 /* ParseChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFF79D624B382700022D6C7 /* ParseChatUITests.m */; };
 		DCFF79E624B385810022D6C7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFF79E524B385810022D6C7 /* LoginViewController.m */; };
 		DCFF79E924B38C6A0022D6C7 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFF79E824B38C6A0022D6C7 /* ChatViewController.m */; };
+		DCFF79EC24B390BA0022D6C7 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFF79EB24B390BA0022D6C7 /* ChatCell.m */; };
 		E3CFA941FB831F606E40E340 /* Pods_ParseChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F003AB7037D817CD4122A7 /* Pods_ParseChatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,8 @@
 		DCFF79E524B385810022D6C7 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		DCFF79E724B38C6A0022D6C7 /* ChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		DCFF79E824B38C6A0022D6C7 /* ChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		DCFF79EA24B390BA0022D6C7 /* ChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		DCFF79EB24B390BA0022D6C7 /* ChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 				DCFF79E524B385810022D6C7 /* LoginViewController.m */,
 				DCFF79E724B38C6A0022D6C7 /* ChatViewController.h */,
 				DCFF79E824B38C6A0022D6C7 /* ChatViewController.m */,
+				DCFF79EA24B390BA0022D6C7 /* ChatCell.h */,
+				DCFF79EB24B390BA0022D6C7 /* ChatCell.m */,
 			);
 			path = ParseChat;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCFF79B724B3826E0022D6C7 /* ViewController.m in Sources */,
+				DCFF79EC24B390BA0022D6C7 /* ChatCell.m in Sources */,
 				DCFF79B124B3826E0022D6C7 /* AppDelegate.m in Sources */,
 				DCFF79E924B38C6A0022D6C7 /* ChatViewController.m in Sources */,
 				DCFF79C224B382700022D6C7 /* main.m in Sources */,
