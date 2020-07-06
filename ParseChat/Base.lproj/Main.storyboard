@@ -50,11 +50,17 @@
                                     <action selector="didTapLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h8c-Ys-wiM"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jnN-Kw-Oae">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="jnN-Kw-Oae" id="Xut-cK-vq5"/>
                         <outlet property="passwordField" destination="7CW-Ks-OkM" id="zj7-RV-c7a"/>
                         <outlet property="usernameField" destination="J7o-TT-kAH" id="icH-OF-ORe"/>
                         <segue destination="HH3-if-TTo" kind="show" identifier="loginSegue" id="OOL-J9-Atr"/>
@@ -72,23 +78,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a Message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-oD-3zh">
-                                <rect key="frame" x="35" y="79" width="251" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a Message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-oD-3zh">
+                                <rect key="frame" x="35" y="79" width="282" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="282" id="Jjf-lM-xv2"/>
+                                    <constraint firstAttribute="height" constant="34" id="iYj-wy-TIp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM0-1O-6MZ">
-                                <rect key="frame" x="331" y="81" width="36" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Send"/>
-                                <connections>
-                                    <action selector="didTapSend:" destination="X0l-zX-8Lb" eventType="touchUpInside" id="tTn-1C-lX9"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYT-ui-1Ls">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYT-ui-1Ls">
                                 <rect key="frame" x="0.0" y="129" width="414" height="713"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="85" id="2zr-d0-dff" customClass="ChatCell">
@@ -128,8 +128,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM0-1O-6MZ">
+                                <rect key="frame" x="350" y="79" width="36" height="30"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="didTapSend:" destination="X0l-zX-8Lb" eventType="touchUpInside" id="tTn-1C-lX9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mYT-ui-1Ls" firstAttribute="leading" secondItem="qaE-Dm-vo6" secondAttribute="leading" id="2Bp-o5-BQ8"/>
+                            <constraint firstItem="mYT-ui-1Ls" firstAttribute="trailing" secondItem="qaE-Dm-vo6" secondAttribute="trailing" id="A4e-sD-DWo"/>
+                            <constraint firstAttribute="bottom" secondItem="mYT-ui-1Ls" secondAttribute="bottom" id="Fsx-SU-bpH"/>
+                            <constraint firstItem="mYT-ui-1Ls" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jMJ-oD-3zh" secondAttribute="bottom" constant="16" id="GSj-IW-eD6"/>
+                            <constraint firstItem="jMJ-oD-3zh" firstAttribute="leading" secondItem="qaE-Dm-vo6" secondAttribute="leading" constant="35" id="Iuc-ds-IwY"/>
+                            <constraint firstItem="qaE-Dm-vo6" firstAttribute="trailing" secondItem="iM0-1O-6MZ" secondAttribute="trailing" constant="28" id="PF4-C3-5Gz"/>
+                            <constraint firstItem="jMJ-oD-3zh" firstAttribute="top" secondItem="qaE-Dm-vo6" secondAttribute="top" constant="23" id="TSg-us-DUn"/>
+                            <constraint firstItem="iM0-1O-6MZ" firstAttribute="leading" secondItem="jMJ-oD-3zh" secondAttribute="trailing" constant="33" id="urO-YC-XiV"/>
+                            <constraint firstItem="iM0-1O-6MZ" firstAttribute="top" secondItem="jMJ-oD-3zh" secondAttribute="top" id="w5S-VU-MQq"/>
+                            <constraint firstItem="mYT-ui-1Ls" firstAttribute="top" secondItem="jMJ-oD-3zh" secondAttribute="bottom" constant="16" id="wtq-ck-07s"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qaE-Dm-vo6"/>
                     </view>
                     <navigationItem key="navigationItem" id="AMb-JD-nzc"/>

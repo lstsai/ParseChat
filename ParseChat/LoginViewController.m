@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)didTapLogin:(id)sender {
+    [self.activityIndicator startAnimating];
+    
     NSString *username= self.usernameField.text;
     NSString *password= self.passwordField.text;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Logging In"
@@ -43,9 +45,13 @@
             NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
+        [self.activityIndicator stopAnimating];
+
     }];
 }
 - (IBAction)didTapSignUp:(id)sender {
+    [self.activityIndicator startAnimating];
+    
     PFUser *newUser= [PFUser user];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Signing In"
            message:@"Usernamne or password cannot be empty."
@@ -76,6 +82,7 @@
             else
                 NSLog(@"User successfully created");
         }];
+        [self.activityIndicator stopAnimating];
     }
 }
 
